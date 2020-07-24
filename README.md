@@ -31,8 +31,17 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+
+The useRouteMatch hook is useful any time you are using a <Route> just so you can get access to its match data, including all of the times you might render a <Route> all by itself outside of a <Switch>.
+
 1. How would you explain form validation to someone who has never programmed before?
+
+Form validation in React allows an error message to be displayed if the user has not correctly filled out the form with the expected type of input.
+
 1. In 1-2 sentences, define end to end testing.
+
+End to end testing is the act of testing out all of the events in your application through the use of seperate spec code and sometimes with the help of a third-party program (i.e. Cypress).
+
 
 ## Instructions
 
@@ -51,12 +60,12 @@ Your finished project must include all of the following requirements:
 
 - [x] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
 - [x] A form with a "/pizza" route
-- [ ] A name text input field
+- [x] A name text input field
 - [ ] Validation for name - name must be at least 2 characters
-- [ ] A dropdown for pizza size
-- [ ] A checklist for toppings - at least 4 (hint: name each separately!)
-- [ ] Text input for special instructions
-- [ ] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
+- [x] A dropdown for pizza size
+- [x] A checklist for toppings - at least 4 (hint: name each separately!)
+- [x] Text input for special instructions
+- [x] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
 
 #### Testing MVP
 

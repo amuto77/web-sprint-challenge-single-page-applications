@@ -1,16 +1,18 @@
 import React from "react"
 
 function Pizza (props) {
+    console.log(props);
     const { name, size, pepperoni, onions, spinach, mushrooms, instructions } = props;
+    const { form, handleChange } = props;
     return (
         <form>
             <label>
                 Name: 
-                <input name = "name" value={name}/>
+                <input name = "name" value={form.name} onChange={handleChange}/>
             </label>
             <label>
                 Size:
-                <select value={size} name="size">
+                <select value={form.size} name="size">
                     <option value="small">Small</option>
                     <option value="medium">Medium</option>
                     <option value="large">Large</option>
@@ -18,24 +20,25 @@ function Pizza (props) {
             </label>
             <label>
                 Pepperoni:
-                <input type="checkbox"/>
+                <input name="pepperoni" type="checkbox" onChange={handleChange}/>
             </label>
             <label>
                 Onions:
-                <input type="checkbox"/>
+                <input name="onions" type="checkbox" onChange={handleChange}/>
             </label>
             <label>
                 Spinach:
-                <input type="checkbox"/>
+                <input name="spinach" type="checkbox" onChange={handleChange}/>
             </label>
             <label>
                 Mushrooms:
-                <input type="checkbox"/>
+                <input name="mushrooms" type="checkbox" onChange={handleChange}/>
             </label>
             <label>
                 Special Instructions
-                <input type="textbox" value={instructions}/>
-            </label>      
+                <input name="instructions" type="textbox" value={form.instructions} onChange={handleChange}/>
+            </label>
+            <button>Add to Order</button>      
         </form>    
     )
 }
