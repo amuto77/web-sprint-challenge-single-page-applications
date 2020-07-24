@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route, useHistory } from "react-router-dom"
 import axios from 'axios'
 import Navigation from "./components/Navigation"
 import Pizza from "./components/Pizza"
 import Completion from "./components/Completion"
 import Home from "./components/Home"
 import "./App.css";
+import * as yup from 'yup'
+import formSchema from "./schema"
 
 const initialForm = {
   name:'',
@@ -21,6 +23,9 @@ const initialForm = {
 function App() {
   const [form, setForm] = useState(initialForm);
   const [pizza, setPizza] = useState([]);
+  
+  const history = useHistory()
+  
   const handleChange = (e) => {
     e.persist();
     e.target.type === 'checkbox' 
@@ -33,9 +38,12 @@ function App() {
     axios.post('https://regres.in/api/pizzas', form)
     .then(res => {
       console.log(res);
+      setPizza([res.data, ...pizza]);
+      setForm(initialForm);
+      history.push('/');
     })
     .catch(err => {
-      
+      console.log(err)
     })
   }
 
@@ -45,7 +53,7 @@ function App() {
       <Navigation />
       <Switch>
         <Route path ="/pizza">
-          <Pizza form={form} handleChange={handleChange}/>
+          <Pizza form={form} handleChange={handleChange} handleSubmit={handleSubmit}/>
         </Route>
       <Route path="/complete">
         <Completion pizza={pizza}/>
