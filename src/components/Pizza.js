@@ -3,16 +3,19 @@ import React from "react"
 function Pizza (props) {
     console.log(props);
     const { name, size, pepperoni, onions, spinach, mushrooms, instructions } = props;
-    const { form, handleChange, handleSubmit} = props;
+    const { form, handleChange, handleSubmit, errors} = props;
     return (
         <form onSubmit={handleSubmit}>
+            {errors.map(error =>{
+                return <p>{error.message}</p>
+            })}
             <label>
                 Name: 
                 <input name = "name" value={form.name} onChange={handleChange}/>
             </label>
             <label>
                 Size:
-                <select value={form.size} name="size">
+                <select value={form.size} name="size" onChange={handleChange}>
                     <option value="small">Small</option>
                     <option value="medium">Medium</option>
                     <option value="large">Large</option>

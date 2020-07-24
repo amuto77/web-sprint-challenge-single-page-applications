@@ -23,28 +23,37 @@ const initialForm = {
 function App() {
   const [form, setForm] = useState(initialForm);
   const [pizza, setPizza] = useState([]);
-  
+  const [errors, setErrors] = useState([]); 
   const history = useHistory()
   
   const handleChange = (e) => {
+    console.dir(e.target.value)
     e.persist();
     e.target.type === 'checkbox' 
     ? setForm({...form, [e.target.name]: e.target.checked})
     : setForm({...form, [e.target.name]: e.target.value});
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.post('https://regres.in/api/pizzas', form)
+    console.log(form);
+    formSchema.validate(form, {abortEarly: false})
     .then(res => {
-      console.log(res);
-      setPizza([res.data, ...pizza]);
-      setForm(initialForm);
-      history.push('/');
+        axios.post('https://reqres.in/api/pizza', form)
+      .then(res => {
+        console.log(res);
+        setPizza(res.data);
+        setForm(initialForm);
+        history.push('/complete');
+      })
+      .catch(err => {
+        console.dir(err)
+      })
     })
-    .catch(err => {
-      console.log(err)
-    })
+  .catch(err =>{
+    console.dir(err);
+    setErrors([...err.inner])
+  })  
   }
 
   return (
@@ -53,7 +62,7 @@ function App() {
       <Navigation />
       <Switch>
         <Route path ="/pizza">
-          <Pizza form={form} handleChange={handleChange} handleSubmit={handleSubmit}/>
+          <Pizza form={form} handleChange={handleChange} handleSubmit={handleSubmit} errors={errors}/>
         </Route>
       <Route path="/complete">
         <Completion pizza={pizza}/>

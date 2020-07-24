@@ -5,8 +5,7 @@ export default function PizzaList(props) {
     return (
         <div>
             <h3>Pizzas</h3>
-            {props.pizza.map(pizza => 
-            <Pizza pizza={pizza} key={pizza.id}/>)}
+           <Completion {props.pizza}/> 
         </div>   
     )
 }

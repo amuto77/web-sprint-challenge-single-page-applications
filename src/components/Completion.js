@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function Completion(props){
     const { name, size, pepperoni, onions, spinach, mushrooms, instructions } = props.pizza
+    console.log(props)
     return (
         <div>
             <h3>{name}</h3>
