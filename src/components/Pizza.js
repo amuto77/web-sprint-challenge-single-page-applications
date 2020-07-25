@@ -11,11 +11,11 @@ function Pizza (props) {
             })}
             <label>
                 Name: 
-                <input name = "name" value={form.name} onChange={handleChange}/>
+                <input id="open" name = "name" value={form.name} onChange={handleChange}/>
             </label>
             <label>
                 Size:
-                <select value={form.size} name="size" onChange={handleChange}>
+                <select id="selector" value={form.size} name="size" onChange={handleChange} >
                     <option value="small">Small</option>
                     <option value="medium">Medium</option>
                     <option value="large">Large</option>
@@ -23,11 +23,11 @@ function Pizza (props) {
             </label>
             <label>
                 Pepperoni:
-                <input name="pepperoni" type="checkbox" checked={form.pepperoni} onChange={handleChange}/>
+                <input id="pep" name="pepperoni" type="checkbox" checked={form.pepperoni} onChange={handleChange}/>
             </label>
             <label>
                 Onions:
-                <input name="onions" type="checkbox" checked={form.onions} onChange={handleChange}/>
+                <input id="on"  name="onions" type="checkbox" checked={form.onions} onChange={handleChange}/>
             </label>
             <label>
                 Spinach:
@@ -41,7 +41,7 @@ function Pizza (props) {
                 Special Instructions
                 <input id="special" name="instructions" type="textbox" value={form.instructions} onChange={handleChange}/>
             </label>
-            <button type="submit">Add to Order</button>      
+            <button id="order" type="submit">Add to Order</button>      
         </form>    
     )
 }
